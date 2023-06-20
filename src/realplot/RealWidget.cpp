@@ -1,4 +1,4 @@
-#include "RealWidget.h"
+#include "srsgui/widget/RealWidget.h"
 #include "srsgui/common/Lineplot.h"
 #include "srsgui/common/Events.h"
 

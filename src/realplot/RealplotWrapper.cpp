@@ -1,6 +1,6 @@
 #include "RealplotWrapper.h"
 
-#include "RealWidget.h"
+#include "srsgui/widget/RealWidget.h"
 #include "srsgui/common/Events.h"
 #include <qapplication.h>
 #include <QThread>
