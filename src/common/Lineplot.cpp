@@ -54,17 +54,17 @@ Lineplot::Lineplot(QWidget *parent)
   for(int i=0;i<numPoints_;i++)
     indexPoints_[i] = i;
 
-  enableAxis(QwtPlot::yRight);
+  // enableAxis(QwtPlot::yRight);
   QwtScaleWidget *leftAxis = axisWidget(QwtPlot::yLeft);
   connect(leftAxis, SIGNAL(scaleDivChanged()), this, SLOT(linkScales()));
 
   setAxisScaleEngine(QwtPlot::xBottom, new QwtLinearScaleEngine);
   setAxisScaleEngine(QwtPlot::yLeft, new QwtLinearScaleEngine);
-  setAxisScaleEngine(QwtPlot::yRight, new QwtLinearScaleEngine);
+  // setAxisScaleEngine(QwtPlot::yRight, new QwtLinearScaleEngine);
 
   axisScaleEngine(QwtPlot::xBottom)->setAttribute(QwtScaleEngine::Floating,true);
   axisScaleEngine(QwtPlot::yLeft)->setAttribute(QwtScaleEngine::Floating,true);
-  axisScaleEngine(QwtPlot::yRight)->setAttribute(QwtScaleEngine::Floating,true);
+  // axisScaleEngine(QwtPlot::yRight)->setAttribute(QwtScaleEngine::Floating,true);
 
   zoomer_ = new MyZoomer(qobject_cast<QwtPlotCanvas*>(canvas()));
   zoomer_->setMousePattern(QwtEventPattern::MouseSelect1, Qt::LeftButton);
