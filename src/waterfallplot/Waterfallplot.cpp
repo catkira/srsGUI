@@ -82,3 +82,13 @@ void Waterfallplot::addToWindow(std::string window, int row, int column)
 {
   plot_->addToWindow(window, row, column);
 }
+
+void Waterfallplot::show()
+{
+  plot_->show();
+}
+
+void Waterfallplot::hide()
+{
+  plot_->hide();
+}

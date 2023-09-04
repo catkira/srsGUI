@@ -97,6 +97,16 @@ void WaterfallplotWrapper::addToWindow(std::string window, int row, int column)
   emit addToWindowSignal(QString::fromStdString(window), row, column);
 }
 
+void WaterfallplotWrapper::hide()
+{
+  widget_->hide();
+}
+
+void WaterfallplotWrapper::show()
+{
+  widget_->show();  
+}
+
 void WaterfallplotWrapper::addToWindowSlot(QString window, int row, int column)
 {
   if(destroyed_)

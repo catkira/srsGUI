@@ -15,6 +15,8 @@ public:
   ~WaterfallplotWrapper();
 
   void addToWindow(std::string window, int row=-1, int column=-1);
+  void hide();
+  void show();
 
   void appendNewData(float* data, int numPoints);
   void appendNewData(double* data, int numPoints);

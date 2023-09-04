@@ -27,6 +27,8 @@ public:
   void setSpectrogramYAxisRange(double yMin, double yMax);
   void setSpectrogramZAxisScale(double zMin, double zMax);
   void addToWindow(std::string window, int row=-1, int column=-1);
+  void show();
+  void hide();
 
 private:
   WaterfallplotWrapper* plot_;
