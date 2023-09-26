@@ -50,7 +50,7 @@ void WaterfallplotWrapper::createWidgetSlot(int numDataPoints, int numRows)
   widget_ = new WaterfallWidget(numDataPoints, numRows);
 
   destroyed_ = false;
-  widget_->setAttribute(Qt::WA_DeleteOnClose, true);
+  // widget_->setAttribute(Qt::WA_DeleteOnClose, true);
   connect(widget_, SIGNAL( destroyed() ),
           this, SLOT( widgetDestroyed() ));
   connect(this, SIGNAL(addToWindowSignal(QString, int, int)),
