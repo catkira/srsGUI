@@ -99,11 +99,15 @@ void WaterfallplotWrapper::addToWindow(std::string window, int row, int column)
 
 void WaterfallplotWrapper::hide()
 {
+  if(destroyed_)
+    return;
   widget_->hide();
 }
 
 void WaterfallplotWrapper::show()
 {
+  if(destroyed_)
+    return;
   widget_->show();  
 }
 
