@@ -39,13 +39,22 @@ IF(Qt5_FOUND AND QWT_FOUND AND QWT_MAJOR_VERSION EQUAL 6)
   QT5_WRAP_CPP(waterfall waterfallplot/WaterfallWidget.h waterfallplot/WaterfallplotWrapper.h)
   QT5_WRAP_CPP(textedit textedit/TextEditWidget.h textedit/TextEditWrapper.h)
   QT5_WRAP_CPP(keyvalue keyvalue/KeyValueWidget.h keyvalue/KeyValueWrapper.h)
-
-  INCLUDE_DIRECTORIES(common complexplot realplot scatterplot waterfallplot textedit keyvalue ${Boost_INCLUDE_DIRS})
   
-  ADD_LIBRARY(srsgui SHARED ${eventwraps} ${lineplotwraps} ${pointplotwraps} ${spectrogramplotwraps} ${complex} ${real} ${scatter} ${waterfall} ${textedit} ${keyvalue} ${SOURCES_ALL} )
-  TARGET_LINK_LIBRARIES(srsgui pthread Qt5::Widgets ${QWT_LIBRARIES})
-  INSTALL(TARGETS srsgui DESTINATION ${LIBRARY_DIR})
-  SG_SET_PIC(srsgui)
+  ADD_LIBRARY(srsgui_static STATIC ${eventwraps} ${lineplotwraps} ${pointplotwraps} ${spectrogramplotwraps} ${complex} ${real} ${scatter} ${waterfall} ${textedit} ${keyvalue} ${SOURCES_ALL} )
+  ADD_LIBRARY(srsgui_shared SHARED ${eventwraps} ${lineplotwraps} ${pointplotwraps} ${spectrogramplotwraps} ${complex} ${real} ${scatter} ${waterfall} ${textedit} ${keyvalue} ${SOURCES_ALL} )
+
+  TARGET_INCLUDE_DIRECTORIES(srsgui_static PUBLIC common complexplot realplot scatterplot waterfallplot textedit keyvalue ${Boost_INCLUDE_DIRS})
+  TARGET_INCLUDE_DIRECTORIES(srsgui_shared PUBLIC common complexplot realplot scatterplot waterfallplot textedit keyvalue ${Boost_INCLUDE_DIRS})
+
+  TARGET_LINK_LIBRARIES(srsgui_static pthread Qt5::Widgets ${QWT_LIBRARIES})
+  TARGET_LINK_LIBRARIES(srsgui_shared pthread Qt5::Widgets ${QWT_LIBRARIES})
+  INSTALL(TARGETS srsgui_static DESTINATION ${LIBRARY_DIR})
+  INSTALL(TARGETS srsgui_shared DESTINATION ${LIBRARY_DIR})
+  SG_SET_PIC(srsgui_shared)
+  SG_SET_PIC(srsgui_static)
+
+  set_target_properties(srsgui_static PROPERTIES OUTPUT_NAME srsgui)
+  set_target_properties(srsgui_shared PROPERTIES OUTPUT_NAME srsgui)
 
   MESSAGE(STATUS "   srsGUI library will be installed.")
 
